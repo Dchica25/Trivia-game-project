@@ -5,11 +5,6 @@
   padding: 0;
   color: #333;
 }
-body{
-  display: flex;
-  justify-content: center;
-  align-self: center;
-}
 
 .timer{
 position: absolute;
@@ -25,6 +20,7 @@ margin-bottom: 5rem;
 
 section{
   display: flex;
+  justify-content: space-evenly;
 }
 
 h2{
@@ -33,12 +29,13 @@ h2{
   margin-bottom: 5rem;
   }
 
+  button{
+    font-size: 75px;
+  }
+
 .container{
   width: 100vh;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-self: center;
 max-width: 80rem;
 margin: 0auto;
 }
