@@ -33,10 +33,11 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 8rem;
+  font-size: 1.5rem;
   /* width: 100%;
   height: 100%; */
 }
+
 
 .wordArt-gradient {
   font-size: 8rem;
@@ -93,13 +94,28 @@ footer {
   cursor: pointer;
 }
 
+.btn-confirm {
+  border: none;
+  background-color: hsl(223, 74%, 48%);
+  /* box-shadow:0 5px 15px rgba(0, 0, 0, 0.5); */
+  border-radius: 8px;
+  color: hsl(0, 0%, 100%);
+  display: inline-block;
+  font-size: 22px;
+  line-height: 22px;
+  margin: 16px 16px 16px 20px;
+  padding: 14px 34px;
+  text-align: center;
+  cursor: pointer;
+}
+
 input[type="submit"] {
   padding: 1rem;
   cursor: pointer;
-  font-weight: bold;
-  font-size: 2rem;
-  background-color: var(--dark);
-  color: var(--light);
+  /* font-weight: bold; */
+  font-size: 1.1rem;
+  /* background-color: var(--dark); */
+  /* color: var(--light); */
 }
 
 input[type="submit"]:active {
@@ -109,7 +125,7 @@ input[type="submit"]:active {
 
 input[type="submit"]:hover {
   border-style: inset;
-  background-color: var(--dark-accent-action);
+  /* background-color: var(--dark-accent-action); */
 }
 
 input {
@@ -119,41 +135,12 @@ input {
   background-color: var(--light-accent);
 }
 
-/*
-  User info Modal Dialog
-*/
-.modal-dialog {
-  display: none;
-  position: fixed;
-  z-index: 1; /* Sit on Top */
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgb(136, 24, 24);
-  background-color: rgb(255, 255, 255);
-  padding-top: 60px;
-} 
-
-.modal-content {
-  background-color: #0d277a;
-  margin: 5% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
+#error, #nameExistMessage{
+  color: red;
+  opacity: .75;
+  position: absolute;
+  bottom: -4.5rem;
 }
 
-.closeButton {
-  color: #aaa;
-  float: right;
-  font-size: 1.5rem;
-  font-weight: bold;
-  cursor: pointer;
-}
 
-.closeButton:hover,
-.closeButton:focus {
-  color: black;
-  transition: ease-in-out;
-  transform: scale(1.2);
-}
+

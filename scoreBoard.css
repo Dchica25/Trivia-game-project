@@ -18,6 +18,7 @@ body {
   background-image: radial-gradient(#8e97b6, #23467a);
 }
 
+
 .wrapper {
   padding-top: 30px;
   padding-left: 20px;
@@ -115,8 +116,8 @@ tbody tr:nth-child(even) {
 .btn {
   border: none;
   background-color: hsl(223, 74%, 48%);
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
-    0px;
+  box-shadow:0 5px 15px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
   color: hsl(0, 0%, 100%);
   display: inline-block;
   font-size: 22px;

@@ -1,53 +1,56 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const myModal = document.getElementById('nameModal');
-  const playButton = document.getElementById("playButton");
-  const mCloseButton = document.getElementsByClassName("close-button");
-  const nameForm = document.getElementById("nameForm");
-  const userNameInput = document.getElementById("userName");
-  
+  // Variables to Get the User Name Input from the Modal form
+  // const nameForm = document.getElementById("nameForm");
+  const confirmButton = document.getElementById("confirm-btn");
 
- playButton.addEventListener('click', userNameEnter);
-//   userNameEnter();
-  function userNameEnter(){
-    myModal.style.display='block';
-    // prompt('Enter a user name');
-
-    //  gameLevelPage('./gameLevelPage.html');
-
-  }
-
-  function gameLevelPage(url){
-      location.assign(url);
-
-  }
-
-
-//   playButton.onclick = function () {
-//     myModal.style.display = 'block';
-//   };
-
-//   mCloseButton.onclick = function () {
-//     myModal.style.display = 'none';
-//   };
-
-  window.onclick = function (event) {
-    if (event.target === myModal) {
-      myModal.style.display = 'none';
-    }
-  }
-
-  nameForm.addEventListener('submit', function (event) {
+  // Add an Event Listener for when user submit form
+  confirmButton.addEventListener("click", (event) => {
     event.preventDefault();
-    const userName = userNameInput.ariaValueMax.trim();
-    alert(`Hello, ${userName}!`);
+    const userNameInput = document.getElementById("userName");
+    const errorMessage = document.getElementById("error");
+    const nameExistMessage = document.getElementById("nameExistMessage");
+
+    const modal = document.getElementById("staticBackdrop");
+
+    //Check if User Name is Still Empty after clicking the submit button
+    const userName = userNameInput.value.trim();
+    let users = localStorage.getItem("users");
+    users = users ? JSON.parse(users) : [];
+    if (userName === "") {
+      errorMessage.style.display = "block";
+      nameExistMessage.style.display = "none";
+      modal.style.display = "block";
+    } else if (Array.isArray(users)) {
+      users.push(userName);
+      localStorage.setItem("users", JSON.stringify(users));
+      modal.style.display = "none";
+      errorMessage.style.display = "none";
+      nameExistMessage.style.display = "none";
+      redirectPage("./scoreBoard.html");
+    } else {
+      users.push(userName);
+      localStorage.setItem("users", JSON.stringify(users));
+      modal.style.display = "none";
+      errorMessage.style.display = "none";
+      nameExistMessage.style.display = "none";
+      redirectPage("./scoreBoard.html");
+    } {
+       
+    }
+
+    userNameInput, (value = ""); //Clear the input field
   });
 
-  // playButton.addEventListener('click',modal);
-
-  function showPrompt() {
-    let userInput = prompt("Please enter your name:", "Harry Potter");
-    if (userInput !== null) {
-      alert("Hello, " + userInput + "!");
+  function hasDuplicates(user, userGameArray) {
+    for (let i = 0; i < userGameArray.lenth; i++) {
+      if (user === userGameArray[i + 1]) {
+        return true;
+      }
     }
+    return false;
+  }
+
+  function redirectPage(url) {
+    location.assign(url);
   }
 });
