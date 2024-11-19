@@ -3,7 +3,7 @@ body {
   box-sizing: border-box;
   height: 100vh;
   /* width: 100%; */
-  
+
   margin: 0;
   color: white;
   font-family: "Times New Roman", Times, serif;
@@ -38,10 +38,9 @@ main {
   height: 100%; */
 }
 
-
 .wordArt-gradient {
   font-size: 8rem;
-  font-weight:bold;
+  font-weight: bold;
   background: linear-gradient(#faa405, #ffdc7d);
   -webkit-background-clip: text;
   background-clip: text;
@@ -49,9 +48,9 @@ main {
   color: transparent;
   /* text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5); */
 
-  
+
   /* transform: rotate(-5deg); */
-} 
+}
 
 footer {
   display: flex;
@@ -61,10 +60,12 @@ footer {
 }
 
 @keyframes zoomInOut {
+
   0%,
   100% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.1);
   }
@@ -135,12 +136,10 @@ input {
   background-color: var(--light-accent);
 }
 
-#error, #nameExistMessage{
+#error,
+#nameExistMessage {
   color: red;
   opacity: .75;
   position: absolute;
   bottom: -4.5rem;
 }
-
-
-

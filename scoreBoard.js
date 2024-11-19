@@ -3,6 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let users = localStorage.getItem("users");
   users = users ? JSON.parse(users) : [];
   const homePage = document.getElementById("homePage");
+  const correctQuestions = localStorage.getItem('userScore');
+  const gameItem = localStorage.getItem('gamelevel');
+
+
   homePage.addEventListener("click", () => {
     let redirectURL = "./index.html";
     url = redirectURL;
@@ -15,30 +19,17 @@ document.addEventListener("DOMContentLoaded", () => {
     // const gameUsers = JSON.parse(localStorage.getItem("gameUsers")) || [];
     let newUser = localStorage.getItem("gameUsers");
     newUser = newUser ? JSON.parse(newUser) : [];
-    const gameLevel = ["beginner", "Intermediate", "Expert"];
+    const gameLevel = ["Beginner", "Intermediate", "Advanced"];
     let gameData = {
       userName: users[users.length - 1],
-      level: gameLevel[randomLevel()],
-      correct: randomScore(),
+      level: gameItem,
+      correct: correctQuestions,
     };
     newUser.push(gameData);
 
     localStorage.setItem("gameUsers", JSON.stringify(newUser));
 
-    /*********************************************************************************
-     * Function randomeLevel() and randomScore() is for Game Simulation Purposes Only
-     *********************************************************************************/
-    function randomLevel() {
-      let level = Math.floor(Math.random() * gameLevel.length);
-      return level;
-    }
 
-    function randomScore() {
-      let score = Math.floor(Math.random() * 25 + 1);
-      return score;
-    }
-
-    return newUser;
   };
 
   // Display employee data in an HTML table
@@ -76,7 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const trackGameData = function () {
     const users = collectGameUsers();
-    console.table(users);
 
     users.sort(function (a, b) {
       if (a.correct > b.correct) {

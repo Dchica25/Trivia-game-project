@@ -5,6 +5,7 @@ let totalTimeLimit = 120;  // Total game time limit (in seconds)
 let timeElapsed = 0;  // Track total time elapsed
 let isGameStarted = false;
 let score = 0;  // Track the user's score
+let level = ""
 
 const questionData = {
   Beginner: [
@@ -95,6 +96,16 @@ const questionData = {
   ]
 };
 
+function checkAndClearOldData() {
+  const storedDate = localStorage.getItem('storageDate');
+  const today = new Date().toDateString();
+
+  if (storedDate !== today) {
+      localStorage.setItem('leaderboard', JSON.stringify([])); // Clear leaderboard
+      localStorage.setItem('storageDate', today); // Update the storage date
+  }
+}
+
 function startGame(difficulty) {
   if (isGameStarted) return;  // Prevent starting the game again if it's already started
 
@@ -106,28 +117,36 @@ function startGame(difficulty) {
 
   document.getElementById('difficulty-selection').style.display = 'none';
   document.getElementById('game').style.display = 'block';
+  document.getElementById('game-info').style.display = 'block';
 
   startTimer();
   loadQuestion();
+
+  localStorage.setItem('gamelevel',JSON.stringify(difficulty));
 }
 
 function startTimer() {
-  let timeLeft = totalTimeLimit;  // 2 minutes (120 seconds)
-  const timerDisplay = document.getElementById('timer');
-  
-  // Clear any existing timer
-  clearInterval(timer);
+  // Start the timer only if it's not already running
+  if (timer) {
+    clearInterval(timer);
+  }
 
   timer = setInterval(function() {
-    timeLeft--;
-    timeElapsed++;  // Increment total elapsed time
-    timerDisplay.textContent = `Time left: ${timeLeft}s`;
+      timeElapsed++;
+      document.getElementById("timerDisplay").textContent = formatTime(timeElapsed);
 
-    if (timeLeft <= 0) {
-      clearInterval(timer);
-      endGame();  // Time's up, end the game
-    }
+      if (timeElapsed >= totalTimeLimit) {
+          clearInterval(timer);
+          alert("Time's up! Game over.");
+          endGame();
+      }
   }, 1000);
+}
+
+function formatTime(seconds) {
+  const min = Math.floor(seconds / 60);
+  const sec = seconds % 60;
+  return `${min}:${sec < 10 ? "0" : ""}${sec}`;
 }
 
 function loadQuestion() {
@@ -166,16 +185,13 @@ function checkAnswer(selected, choiceElement) {
     choice.style.pointerEvents = 'none';  // Disable clicking other answers
   });
 
-  // Highlight the selected answer
-  choiceElement.style.backgroundColor = selected === correctAnswer ? 'green' : 'red';
-
   if (selected === correctAnswer) {
     feedback.textContent = 'Correct!';
     score++;  // Increment score if the answer is correct
   } else {
     feedback.textContent = `Incorrect. The correct answer is ${correctAnswer}.`;
   }
-
+  localStorage.setItem("score", score);
   // Show the next button
   document.getElementById('next-btn').style.display = 'inline-block';
 }
@@ -194,8 +210,9 @@ function nextQuestion() {
 }
 
 function endGame() {
-  // Store score in localStorage or sessionStorage
+  // Store score and total time in localStorage or sessionStorage
   localStorage.setItem('userScore', score);
+  localStorage.setItem('timeElapsed', timeElapsed);
   
   // Redirect to the scoreboard page
   location.assign('./scoreBoard.html');
