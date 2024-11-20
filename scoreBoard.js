@@ -17,7 +17,6 @@ const gameItem = localStorage.getItem('gamelevel');
     // const gameUsers = JSON.parse(localStorage.getItem("gameUsers")) || [];
     let newUser = localStorage.getItem("gameUsers");
     newUser = newUser ? JSON.parse(newUser) : [];
-<<<<<<< HEAD
     const gameLevel = ["beginner", "Intermediate", "Expert"];
     let gameData = {
       userName: users[users.length - 1],
@@ -27,7 +26,8 @@ let gameData = {
   userName: users[users.length - 1],
   level: gameItem,
   correct: correctQuestions,
-<<<<<<< HEAD
+};
+
     /*********************************************************************************
      * Function randomeLevel() and randomScore() is for Game Simulation Purposes Only
      *********************************************************************************/
@@ -60,15 +60,10 @@ let gameData = {
 
       gameTable.appendChild(newRow);
     });
-  };
 
   const trackGameData = function () {
     const users = collectGameUsers();
-<<<<<<< HEAD
     console.table(users);
-=======
->>>>>>> 7b8f88b823362f2b3877d3d488b9d9ac260e8f23
-
     users.sort(function (a, b) {
       if (a.correct > b.correct) {
         return -1;
@@ -81,7 +76,6 @@ let gameData = {
   };
 
   trackGameData();
-});
 
 // Add event listener to 'Add Employees' button
 // addEmployeesBtn.addEventListener('click', trackEmployeeData);
