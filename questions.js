@@ -1,4 +1,4 @@
-question.js
+
 let currentQuestionIndex = 0;
 let questions = [];
 let timer;

@@ -1,4 +1,4 @@
-index.js
+
 document.addEventListener("DOMContentLoaded", () => {
   // Variables to Get the User Name Input from the Modal form
   // const nameForm = document.getElementById("nameForm");

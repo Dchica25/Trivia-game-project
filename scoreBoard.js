@@ -1,4 +1,4 @@
-scoreboard.js
+
 document.addEventListener("DOMContentLoaded", () => {
   // Variables to Get the Game User Name Scores for Scoreboard
   let users = localStorage.getItem("users");
