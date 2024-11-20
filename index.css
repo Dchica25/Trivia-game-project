@@ -1,12 +1,9 @@
-body {
+index.css body {
   background-image: radial-gradient(#8e97b6, #23467a);
   box-sizing: border-box;
   height: 100vh;
-<<<<<<< HEAD
-=======
   /* width: 100%; */
 
->>>>>>> 7b8f88b823362f2b3877d3d488b9d9ac260e8f23
   margin: 0;
   color: white;
   font-family: "Times New Roman", Times, serif;
@@ -37,36 +34,23 @@ main {
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
-<<<<<<< HEAD
-}
-
-
-.wordArt-gradient {
-  font-size: 8rem;
-  font-weight:bold;
-=======
   /* width: 100%;
-  height: 100%; */
+    height: 100%; */
 }
 
 .wordArt-gradient {
   font-size: 8rem;
   font-weight: bold;
->>>>>>> 7b8f88b823362f2b3877d3d488b9d9ac260e8f23
   background: linear-gradient(#faa405, #ffdc7d);
   -webkit-background-clip: text;
   background-clip: text;
   text-fill-color: transparent;
   color: transparent;
-<<<<<<< HEAD
-} 
-=======
   /* text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5); */
 
 
   /* transform: rotate(-5deg); */
 }
->>>>>>> 7b8f88b823362f2b3877d3d488b9d9ac260e8f23
 
 footer {
   display: flex;
@@ -76,18 +60,12 @@ footer {
 }
 
 @keyframes zoomInOut {
-<<<<<<< HEAD
-=======
 
->>>>>>> 7b8f88b823362f2b3877d3d488b9d9ac260e8f23
   0%,
   100% {
     transform: scale(1);
   }
-<<<<<<< HEAD
-=======
 
->>>>>>> 7b8f88b823362f2b3877d3d488b9d9ac260e8f23
   50% {
     transform: scale(1.1);
   }
@@ -117,8 +95,6 @@ footer {
   cursor: pointer;
 }
 
-<<<<<<< HEAD
-=======
 .btn-confirm {
   border: none;
   background-color: hsl(223, 74%, 48%);
@@ -133,20 +109,14 @@ footer {
   text-align: center;
   cursor: pointer;
 }
->>>>>>> 7b8f88b823362f2b3877d3d488b9d9ac260e8f23
 
 input[type="submit"] {
   padding: 1rem;
   cursor: pointer;
-<<<<<<< HEAD
-  font-size: 1.1rem;
-  
-=======
   /* font-weight: bold; */
   font-size: 1.1rem;
   /* background-color: var(--dark); */
   /* color: var(--light); */
->>>>>>> 7b8f88b823362f2b3877d3d488b9d9ac260e8f23
 }
 
 input[type="submit"]:active {
@@ -156,10 +126,7 @@ input[type="submit"]:active {
 
 input[type="submit"]:hover {
   border-style: inset;
-<<<<<<< HEAD
-=======
   /* background-color: var(--dark-accent-action); */
->>>>>>> 7b8f88b823362f2b3877d3d488b9d9ac260e8f23
 }
 
 input {
@@ -169,93 +136,10 @@ input {
   background-color: var(--light-accent);
 }
 
-<<<<<<< HEAD
-#error, #nameExistMessage{
-=======
 #error,
 #nameExistMessage {
->>>>>>> 7b8f88b823362f2b3877d3d488b9d9ac260e8f23
   color: red;
   opacity: .75;
   position: absolute;
   bottom: -4.5rem;
-<<<<<<< HEAD
 }
-
-/*********************************************************
-* Media Queries for Responsive Desktop, Tablet, and Mobile
-**********************************************************/
-
-@media (max-width: 1280px){  /* Screen Responsive to Desktop, Laptops */
-  .animated-zoomText {
-    font-size: 3.5rem;
-  }
-  .play-btn {
-    transition-duration: 0.4s;
-    background: linear-gradient(#fad501, #fda502);
-    border-radius: 15px;
-    border: 3px solid #0a0200;
-    font-size: 3rem;
-    padding: 7px;
-    color: #000000;
-    width: 18rem;
-  }
-
-}
-
-@media (max-width: 768px){ /* Screen Responsive to Tablets */
-  .animated-zoomText {
-    font-size: 3rem;
-  }
-  .play-btn {
-    transition-duration: 0.4s;
-    background: linear-gradient(#fad501, #fda502);
-    border-radius: 15px;
-    border: 3px solid #0a0200;
-    font-size: 3rem;
-    padding: 3px;
-    color: #000000;
-    width: 14rem;
-  }
-
-}
-
-@media (max-width: 600px){ /* Screen Responsive to Mobile Device */
-  .animated-zoomText {
-    font-size: 2.5rem;
-  }
-  .play-btn {
-    transition-duration: 0.4s;
-    background: linear-gradient(#fad501, #fda502);
-    border-radius: 15px;
-    border: 3px solid #0a0200;
-    font-size: 2.5rem;
-    padding: 2.5px;
-    color: #000000;
-    width: 12rem;
-  }
-
-}
-
-@media (max-width: 520px){ /* Screen Responsive to Smart Phone Device */
-  .animated-zoomText {
-    font-size: 2.1rem;
-  }
-  .play-btn {
-    transition-duration: 0.4s;
-    background: linear-gradient(#fad501, #fda502);
-    border-radius: 15px;
-    border: 3px solid #0a0200;
-    font-size: 2rem;
-    padding: 1.5px;
-    color: #000000;
-    width: 7rem;
-  }
-
-}
-
-
-
-=======
-}
->>>>>>> 7b8f88b823362f2b3877d3d488b9d9ac260e8f23

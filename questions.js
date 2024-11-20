@@ -1,3 +1,4 @@
+question.js
 let currentQuestionIndex = 0;
 let questions = [];
 let timer;
@@ -101,10 +102,12 @@ function checkAndClearOldData() {
   const today = new Date().toDateString();
 
   if (storedDate !== today) {
-      localStorage.setItem('leaderboard', JSON.stringify([])); // Clear leaderboard
-      localStorage.setItem('storageDate', today); // Update the storage date
+    localStorage.setItem('leaderboard', JSON.stringify([])); // Clear leaderboard
+    localStorage.setItem('storageDate', today); // Update the storage date
   }
 }
+
+checkAndClearOldData();
 
 function startGame(difficulty) {
   if (isGameStarted) return;  // Prevent starting the game again if it's already started
@@ -122,7 +125,7 @@ function startGame(difficulty) {
   startTimer();
   loadQuestion();
 
-  localStorage.setItem('gamelevel',JSON.stringify(difficulty));
+  localStorage.setItem('gamelevel', JSON.stringify(difficulty));
 }
 
 function startTimer() {
@@ -131,15 +134,15 @@ function startTimer() {
     clearInterval(timer);
   }
 
-  timer = setInterval(function() {
-      timeElapsed++;
-      document.getElementById("timerDisplay").textContent = formatTime(timeElapsed);
+  timer = setInterval(function () {
+    timeElapsed++;
+    document.getElementById("timerDisplay").textContent = formatTime(timeElapsed);
 
-      if (timeElapsed >= totalTimeLimit) {
-          clearInterval(timer);
-          alert("Time's up! Game over.");
-          endGame();
-      }
+    if (timeElapsed >= totalTimeLimit) {
+      clearInterval(timer);
+      alert("Time's up! Game over.");
+      endGame();
+    }
   }, 1000);
 }
 
@@ -213,7 +216,7 @@ function endGame() {
   // Store score and total time in localStorage or sessionStorage
   localStorage.setItem('userScore', score);
   localStorage.setItem('timeElapsed', timeElapsed);
-  
+
   // Redirect to the scoreboard page
   location.assign('./scoreBoard.html');
 }

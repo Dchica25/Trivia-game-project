@@ -1,21 +1,18 @@
+index.js
 document.addEventListener("DOMContentLoaded", () => {
-
-  // Declared variable for button clicked on the Modal Window
-
   // Variables to Get the User Name Input from the Modal form
   // const nameForm = document.getElementById("nameForm");
   const confirmButton = document.getElementById("confirm-btn");
+  const userNameForm = document.getElementById("nameForm");
 
   // Add an Event Listener for when user submit form
   confirmButton.addEventListener("click", (event) => {
     event.preventDefault();
-
-    // Variables to Get the User Name Input from the Modal form  const userNameInput = document.getElementById("userName");
+    // Variables to Get the User Name Input from the Modal form
+    const userNameInput = document.getElementById("userName");
     const errorMessage = document.getElementById("error");
     const nameExistMessage = document.getElementById("nameExistMessage");
-
     const modal = document.getElementById("staticBackdrop");
-
     //Check if User Name is Still Empty after clicking the submit button
     const userName = userNameInput.value.trim();
     let users = localStorage.getItem("users");
@@ -25,55 +22,41 @@ document.addEventListener("DOMContentLoaded", () => {
       nameExistMessage.style.display = "none";
       modal.style.display = "block";
     } else if (Array.isArray(users)) {
-      if (isDuplicate(userName, users)) {
+      if (isDuplicate(userName, users)) {   // Check if user named entered already exist //
         errorMessage.style.display = "none";
         nameExistMessage.style.display = "block";
         modal.style.display = "block";
+        userNameForm.reset(); // Clear the User Name Input
       } else {
         users.push(userName);
         localStorage.setItem("users", JSON.stringify(users));
         modal.style.display = "none";
         errorMessage.style.display = "none";
         nameExistMessage.style.display = "none";
-        redirectPage("./scoreBoard.html");        // Use to direct user to the actual game play //
+        redirectPage("./questions.html");        // Use to direct user to the actual game play //
       }
-
-      users.push(userName);
-      localStorage.setItem("users", JSON.stringify(users));
-      modal.style.display = "none";
-      errorMessage.style.display = "none";
-      nameExistMessage.style.display = "none";
-      redirectPage("./questions.html");
     } else {
       users.push(userName);
       localStorage.setItem("users", JSON.stringify(users));
       modal.style.display = "none";
       errorMessage.style.display = "none";
       nameExistMessage.style.display = "none";
-      redirectPage("./scoreBoard.html");
+      redirectPage("./questions.html");
     } {
-
     }
-
-    userNameInput, (value = ""); //Clear the input field
+    userNameForm.reset();   //Clear the input field
   });
 
-
+  // Checks if there are any duplicate names in the list of userGamerArray
   function isDuplicate(user, userGameArray) {
     for (let i = 0; i < userGameArray.length; i++) {
       if (user === userGameArray[i]) {
         return true;
       }
-      function hasDuplicates(user, userGameArray) {
-        for (let i = 0; i < userGameArray.lenth; i++) {
-          if (user === userGameArray[i + 1]) {
-            return true;
-          }
-        }
-        return false;
-      }
-
-      function redirectPage(url) {
-        location.assign(url);
-      }
-    });
+    }
+    return false;
+  }
+  function redirectPage(url) {
+    location.assign(url);
+  }
+});

@@ -1,4 +1,4 @@
-* {
+questions.css * {
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
@@ -11,31 +11,31 @@ body {
 
 }
 
- #timerSection {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    gap: 10px;
-    padding-top: 30px;
-    
-  }
+#timerSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+  padding-top: 30px;
 
-  #timerDisplay {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2.5rem;
-    width: 150px;
-    height: 70px;
-    background-color: white;
-    border: 2px solid rgb(245, 68, 68);
-    border-radius: 20px;
-    font-size: 3rem;
-    font-weight: bold;
-    color: #333;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-  }
+}
+
+#timerDisplay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  width: 150px;
+  height: 70px;
+  background-color: white;
+  border: 2px solid rgb(245, 68, 68);
+  border-radius: 20px;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #333;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
 
 
 h1 {
@@ -102,7 +102,8 @@ h2 {
   flex-grow: 1;
   text-align: left;
 }
-P{
-font-size: 50px;
-color: #fff;
+
+P {
+  font-size: 50px;
+  color: #fff;
 }

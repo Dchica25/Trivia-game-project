@@ -1,4 +1,4 @@
-*,
+scoreboard.css *,
 *::before,
 *::after {
   box-sizing: border-box;
@@ -39,7 +39,7 @@ h2 {
 
 .wordArt-gradient {
   font-size: 5rem;
-  font-weight:bold;
+  font-weight: bold;
   background: linear-gradient(#faa405, #ffdc7d);
   -webkit-background-clip: text;
   background-clip: text;
@@ -47,9 +47,9 @@ h2 {
   color: transparent;
   /* text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5); */
 
-  
+
   /* transform: rotate(-5deg); */
-} 
+}
 
 
 .board {
@@ -64,8 +64,8 @@ h2 {
   padding: 30px 40px;
 }
 
-.board{
-  background: linear-gradient(#f8ed87,#faa405);
+.board {
+  background: linear-gradient(#f8ed87, #faa405);
 }
 
 .board-header::after {
@@ -81,12 +81,12 @@ h2 {
 }
 
 table {
-  width:100%;
+  width: 100%;
   border-spacing: 0;
   border-collapse: collapse;
 }
 
-td{
+td {
   text-align: center;
 
 }
@@ -116,7 +116,7 @@ tbody tr:nth-child(even) {
 .btn {
   border: none;
   background-color: hsl(223, 74%, 48%);
-  box-shadow:0 5px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   border-radius: 8px;
   color: hsl(0, 0%, 100%);
   display: inline-block;
