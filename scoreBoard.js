@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let users = localStorage.getItem("users");
   users = users ? JSON.parse(users) : [];
   const homePage = document.getElementById("homePage");
+const correctQuestions = localStorage.getItem('userScore');
+const gameItem = localStorage.getItem('gamelevel');
   homePage.addEventListener("click", () => {
     let redirectURL = "./index.html";
     url = redirectURL;
@@ -15,16 +17,17 @@ document.addEventListener("DOMContentLoaded", () => {
     // const gameUsers = JSON.parse(localStorage.getItem("gameUsers")) || [];
     let newUser = localStorage.getItem("gameUsers");
     newUser = newUser ? JSON.parse(newUser) : [];
+<<<<<<< HEAD
     const gameLevel = ["beginner", "Intermediate", "Expert"];
     let gameData = {
       userName: users[users.length - 1],
       level: gameLevel[randomLevel()],
-      correct: randomScore(),
-    };
-    newUser.push(gameData);
-
-    localStorage.setItem("gameUsers", JSON.stringify(newUser));
-
+const gameLevel = ["Beginner", "Intermediate", "Advanced"];
+let gameData = {
+  userName: users[users.length - 1],
+  level: gameItem,
+  correct: correctQuestions,
+<<<<<<< HEAD
     /*********************************************************************************
      * Function randomeLevel() and randomScore() is for Game Simulation Purposes Only
      *********************************************************************************/
@@ -37,21 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
       let score = Math.floor(Math.random() * 25 + 1);
       return score;
     }
-
-    return newUser;
-  };
-
-  // Display employee data in an HTML table
-  const displayGameUsers = function (gameUsersArray) {
-    // Get the employee table
-    const gameTable = document.querySelector("#game-table");
-
-    // Clear the game table
-    gameTable.innerHTML = "";
-
-    // Loop through the all the game user data and create a row for each user
-    gameUsersArray.forEach((user, index) => {
-      const newRow = document.createElement("tr");
 
       const rankCell = document.createElement("td");
       rankCell.textContent = index + 1;
@@ -76,7 +64,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const trackGameData = function () {
     const users = collectGameUsers();
+<<<<<<< HEAD
     console.table(users);
+=======
+>>>>>>> 7b8f88b823362f2b3877d3d488b9d9ac260e8f23
 
     users.sort(function (a, b) {
       if (a.correct > b.correct) {
@@ -94,3 +85,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Add event listener to 'Add Employees' button
 // addEmployeesBtn.addEventListener('click', trackEmployeeData);
+console.table(users);

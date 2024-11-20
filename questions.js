@@ -1,11 +1,14 @@
 let currentQuestionIndex = 0;
 let questions = [];
-let timeLimit = 10;
 let timer;
+let totalTimeLimit = 120;  // Total game time limit (in seconds)
+let timeElapsed = 0;  // Track total time elapsed
 let isGameStarted = false;
+let score = 0;  // Track the user's score
+let level = ""
 
 const questionData = {
-  easy: [
+  Beginner: [
     {
       question: "What is 2 + 2?",
       answers: { A: "3", B: "4", C: "5", D: "6" },
@@ -32,7 +35,7 @@ const questionData = {
       correctAnswer: "A"
     }
   ],
-  medium: [
+  Intermediate: [
     {
       question: "What is the capital of France?",
       answers: { A: "Berlin", B: "Madrid", C: "Paris", D: "Rome" },
@@ -59,7 +62,7 @@ const questionData = {
       correctAnswer: "A"
     }
   ],
-  hard: [
+  Advanced: [
     {
       question: "What is the square root of 144?",
       answers: { A: "10", B: "12", C: "14", D: "16" },
@@ -93,39 +96,57 @@ const questionData = {
   ]
 };
 
+function checkAndClearOldData() {
+  const storedDate = localStorage.getItem('storageDate');
+  const today = new Date().toDateString();
 
+  if (storedDate !== today) {
+      localStorage.setItem('leaderboard', JSON.stringify([])); // Clear leaderboard
+      localStorage.setItem('storageDate', today); // Update the storage date
+  }
+}
 
 function startGame(difficulty) {
-  questions = questionData[difficulty];
-  timeLimit = difficulty === 'easy' ? 10 : difficulty === 'medium' ? 7 : 5;
-  currentQuestionIndex = 0;
-  isGameStarted = true;
+  if (isGameStarted) return;  // Prevent starting the game again if it's already started
 
+  questions = questionData[difficulty];
+  currentQuestionIndex = 0;
+  score = 0;  // Reset score at the start of the game
+  timeElapsed = 0;  // Reset total time elapsed at the start of the game
+  isGameStarted = true;
 
   document.getElementById('difficulty-selection').style.display = 'none';
   document.getElementById('game').style.display = 'block';
-
+  document.getElementById('game-info').style.display = 'block';
 
   startTimer();
-
-
   loadQuestion();
+
+  localStorage.setItem('gamelevel',JSON.stringify(difficulty));
 }
 
-
 function startTimer() {
-  let timeLeft = timeLimit;
-  document.getElementById('timer').textContent = timeLeft;
+  // Start the timer only if it's not already running
+  if (timer) {
+    clearInterval(timer);
+  }
 
-  timer = setInterval(() => {
-    timeLeft--;
-    document.getElementById('timer').textContent = timeLeft;
+  timer = setInterval(function() {
+      timeElapsed++;
+      document.getElementById("timerDisplay").textContent = formatTime(timeElapsed);
 
-    if (timeLeft <= 0) {
-      clearInterval(timer);
-      showFeedback(false);
-    }
+      if (timeElapsed >= totalTimeLimit) {
+          clearInterval(timer);
+          alert("Time's up! Game over.");
+          endGame();
+      }
   }, 1000);
+}
+
+function formatTime(seconds) {
+  const min = Math.floor(seconds / 60);
+  const sec = seconds % 60;
+  return `${min}:${sec < 10 ? "0" : ""}${sec}`;
 }
 
 function loadQuestion() {
@@ -133,12 +154,12 @@ function loadQuestion() {
   document.getElementById('question').textContent = question.question;
 
   const choices = document.getElementById('choices');
-  choices.innerHTML = '';
+  choices.innerHTML = '';  // Clear previous choices
 
   for (let [key, value] of Object.entries(question.answers)) {
     const choiceContainer = document.createElement('div');
     choiceContainer.classList.add('choice-container');
-    choiceContainer.setAttribute('onclick', `checkAnswer('${key}')`);
+    choiceContainer.setAttribute('onclick', `checkAnswer('${key}', this)`);
 
     const choicePrefix = document.createElement('p');
     choicePrefix.classList.add('choice-prefix');
@@ -154,18 +175,24 @@ function loadQuestion() {
   }
 }
 
-
-function checkAnswer(selected) {
+function checkAnswer(selected, choiceElement) {
   const correctAnswer = questions[currentQuestionIndex].correctAnswer;
   const feedback = document.getElementById('feedback');
 
+  // Disable all choices after one is selected
+  const allChoices = document.querySelectorAll('.choice-container');
+  allChoices.forEach(choice => {
+    choice.style.pointerEvents = 'none';  // Disable clicking other answers
+  });
+
   if (selected === correctAnswer) {
     feedback.textContent = 'Correct!';
+    score++;  // Increment score if the answer is correct
   } else {
     feedback.textContent = `Incorrect. The correct answer is ${correctAnswer}.`;
   }
-
-
+  localStorage.setItem("score", score);
+  // Show the next button
   document.getElementById('next-btn').style.display = 'inline-block';
 }
 
@@ -177,7 +204,16 @@ function nextQuestion() {
     document.getElementById('feedback').textContent = '';
     document.getElementById('next-btn').style.display = 'none';
   } else {
-    alert('Game Over!');
-
+    // If all questions are answered, end the game.
+    endGame();
   }
+}
+
+function endGame() {
+  // Store score and total time in localStorage or sessionStorage
+  localStorage.setItem('userScore', score);
+  localStorage.setItem('timeElapsed', timeElapsed);
+  
+  // Redirect to the scoreboard page
+  location.assign('./scoreBoard.html');
 }

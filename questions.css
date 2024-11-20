@@ -6,13 +6,36 @@
   color: #333;
 }
 
+body {
+  background-image: radial-gradient(#8e97b6, #23467a);
 
-.timer {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  font-size: 1.8rem;
 }
+
+ #timerSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+    padding-top: 30px;
+    
+  }
+
+  #timerDisplay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    width: 150px;
+    height: 70px;
+    background-color: white;
+    border: 2px solid rgb(245, 68, 68);
+    border-radius: 20px;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  }
 
 
 h1 {
@@ -45,28 +68,27 @@ h2 {
 
 .choice-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
+  align-content: center;
   margin-bottom: 10px;
   width: 100%;
   font-size: 25px;
-  padding: 1rem;
   border-radius: 8px;
-  background-color: burlywood;
+  background: linear-gradient(#faa405, #ffdc7d);
   transition: transform 150ms, background-color 150ms;
 }
 
 
 .choice-container:hover {
   cursor: pointer;
-  background-color: blueviolet;
+  background: linear-gradient(#f88c78, #ee3b05);
   transform: translateY(-0.1rem);
 }
 
 
 .choice-prefix {
   padding: 25px 50px;
-  background-color: aqua;
+  background-color: rgb(55, 117, 249);
   border-radius: 50%;
   font-weight: bold;
   font-size: 2rem;
@@ -79,4 +101,8 @@ h2 {
   font-size: 1.5rem;
   flex-grow: 1;
   text-align: left;
+}
+P{
+font-size: 50px;
+color: #fff;
 }
